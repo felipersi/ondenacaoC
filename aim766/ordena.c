@@ -22,15 +22,13 @@ Nota: a avaliação será de 0-10. 0 para o trabalho não entregue e 10 para o t
 #include <stdlib.h>// necessário p/ as funções rand() e srand()
 #include<time.h>//necessário p/ função time()
 
-#define T_VECTOR 10
+
 int main()
 {
     int numlist;
-    int values[T_VECTOR];
-    int values_invert[T_VECTOR];
-    int i, j ;
-    int aux;
-        
+    int i;
+    int vetOriginal[i], vetInvert[i];
+
     printf("Quantos numeros deseja gerar na lista: ");
     scanf("%d", &numlist);  
     printf("numero = %d \n\n",numlist);
@@ -38,21 +36,17 @@ int main()
     srand(time(NULL));
     
         if (numlist >= 1) {
-              for (i = 0; i < numlist; i++) {
-                values[numlist] = rand() % 100;
-                printf("%d ", values[numlist]);
-                }
-               
-              for (i=0; i<numlist; i++){
-                
-                 values_invert[numlist] = values[numlist-i];
-                 printf("%d ",values_invert[numlist]);
-                }
-               
-               
-              
-
-
+            printf(" Valor Original: \n");
+             for(i = 0; i < numlist; i++) {
+                vetOriginal[i] = rand() % 100;
+                printf(" %d ", vetOriginal[i]);
+            }
+            printf("\n Valor Invertido: \n");
+            for(i = 0; i < numlist; i++) {
+                vetInvert[i] = vetOriginal[numlist-i-1];
+                printf(" %d ", vetInvert[i]);
+            }
+            return 0;
     
         } else {
             printf("Erro: sem condição valida");
