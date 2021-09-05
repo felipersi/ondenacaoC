@@ -28,6 +28,9 @@ int main()
     int numlist;
     int i;
     int vetOriginal[i], vetInvert[i];
+    int max = 0;
+    int min = 0;
+    
 
     printf("Quantos numeros deseja gerar na lista: ");
     scanf("%d", &numlist);  
@@ -41,11 +44,22 @@ int main()
                 vetOriginal[i] = rand() % 100;
                 printf(" %d ", vetOriginal[i]);
             }
+           
             printf("\n Valor Invertido: \n");
             for(i = 0; i < numlist; i++) {
                 vetInvert[i] = vetOriginal[numlist-i-1];
                 printf(" %d ", vetInvert[i]);
             }
+           
+            for(i = 0; i < numlist; i++) {
+                if (vetOriginal[i]>max)
+                    max = vetOriginal[i];
+                else 
+                    if (vetOriginal[i]<max)
+                       min = vetOriginal[i];
+            }
+            
+            printf("\n\n Maior valor %d\n", max);
             return 0;
     
         } else {
