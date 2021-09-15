@@ -1,6 +1,5 @@
 /******************************************************************************
 O programa deverá:
-
 - Criar um arquivo texto e gerar uma sequência aleatória de números separados por “;” (ponto e vírgula).
 O usuário deverá inserir quantos números deseja gerar no arquivo (no mínimo 100 números).
 - Após a geração do arquivo, o programa deverá ter uma função para carregar o arquivo. Ao carregar o arquivo, 
@@ -12,7 +11,6 @@ com os elementos invertidos).
 - opção de geração de um novo arquivo com o maior e o menor número encontrado no arquivo e a média de todos os 
 números do arquivo.
 - opção de geração de um novo arquivo em que cada número do arquivo original é convertido para binário.
-
 Forma de entrega e avaliação: o trabalho deverá ser entregue e apresentado (código rodando) ao professor, em sala de aula, no dia definido no cronograma da disciplina. Após a apresentação, o aluno deverá postar o código-fonte (.c) na área de atividades do blackboard.
 Nota: a avaliação será de 0-10. 0 para o trabalho não entregue e 10 para o trabalho que atenda totalmente aos critérios.
 *******************************************************************************/
@@ -30,6 +28,7 @@ int main()
     int vetOriginal[i], vetInvert[i];
     int max = 0;
     int min = 0;
+    int c, k;
     
 
     printf("Quantos numeros deseja gerar na lista: ");
@@ -39,29 +38,47 @@ int main()
     srand(time(NULL));
     
         if (numlist >= 1) {
-            printf(" Valor Original: \n");
+            printf(" Valor Original: ");
              for(i = 0; i < numlist; i++) {
                 vetOriginal[i] = rand() % 100;
                 printf(" %d ", vetOriginal[i]);
             }
            
-            printf("\n Valor Invertido: \n");
+            printf("\n Valor Invertido: ");
             for(i = 0; i < numlist; i++) {
                 vetInvert[i] = vetOriginal[numlist-i-1];
                 printf(" %d ", vetInvert[i]);
             }
-           
+            
+            printf("\n");
             for(i = 0; i < numlist; i++) {
                 if (vetOriginal[i]>max)
                     max = vetOriginal[i];
                 else 
-                    if (vetOriginal[i]<max)
+                    if (vetOriginal[i]<min)
                        min = vetOriginal[i];
             }
             
-            printf("\n\n Maior valor %d\n", max);
-            return 0;
-    
+            printf("\n\n Maior valor: %d\n", max);
+            /*printf("\n\n Menor valor %d\n", min);*/
+
+             
+
+              
+              for(i = 0; i < numlist; i++) {
+              printf("\n %d em em binario é: ", vetOriginal[i]);
+              for (c = 40; c >= numlist; c--)
+              {
+                k = vetOriginal[i] >> c;
+            
+                if (k & 1)
+                  printf("1");
+                else
+                  printf("0");
+              }
+            }
+            
+ 
         } else {
             printf("Erro: sem condição valida");
         }
