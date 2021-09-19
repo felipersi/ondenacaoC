@@ -24,11 +24,12 @@ Nota: a avaliação será de 0-10. 0 para o trabalho não entregue e 10 para o t
 int main()
 {
     int numlist;
-    int i;
+    int i, j;
     int vetOriginal[i], vetInvert[i];
     int max = 0;
     int min = 0;
     int c, k;
+    int aux;
     
 
     printf("Quantos numeros deseja gerar na lista: ");
@@ -49,7 +50,22 @@ int main()
                 vetInvert[i] = vetOriginal[numlist-i-1];
                 printf(" %d ", vetInvert[i]);
             }
-            
+            /*Valor ordenado*/
+            for(i = 0; i < numlist; i++) {
+                for( j=i+1; j<numlist; j++ ){
+                    if( vetOriginal[i]  > vetOriginal[j]  ){
+                        aux = vetOriginal[i];
+                        vetOriginal[i] = vetOriginal[j];
+                        vetOriginal[j] = aux;
+                        }
+                }
+            }
+            printf("\n Valor Ordenado:");
+            for(i=0;i<=numlist;i++)
+            {
+            printf(" %d ",vetOriginal[i]);
+            }     
+            /*Valor ordenado*/
             printf("\n");
             for(i = 0; i < numlist; i++) {
                 if (vetOriginal[i]>max)
