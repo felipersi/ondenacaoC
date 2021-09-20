@@ -139,4 +139,24 @@ do{
     }
   } while(operationNum !=5);
 
+
+
+
+
+
+        if (numlist >= 1) {
+            printf("\nAntigo Valor Original: ");
+            printf("\n Antigo Valor Invertido: ");
+            /*Valor ordenado*/
+            printf("\n Antigo Valor Ordenado:");
+            /*Valor ordenado*/
+            printf("\n\n Antigo Maior valor: %d\n", max);
+            printf("\n\n Antigo valor %d\n", min);
+            printf("\nAnatigo  %d em em binario é: ", vetOriginal[i]);
+           
+        } else {
+            printf("Erro: sem condição valida");
+        }
+
+
 }
