@@ -9,9 +9,8 @@ void indexedSequentialSearch(int arr[], int n, int k);
 // Driver code
 int main(){
 
-    //printf("Elementos inseridos: 6, 7, 8, 9, 10, 11, 12 ,13 ,14, 15, 16, 17 \n");
 
-    int arr[100];
+    int arr[0] = {};
     int k,i;
     int sizelist;
     int n = sizeof(arr) / sizeof(arr[0]);
@@ -49,16 +48,18 @@ void indexedSequentialSearch(int arr[], int n, int k){
     int ind = 0;
     int start;
     int end;
+    
     //debug
-
     printf("array: %d | int n: %d | int k: %d", arr[i],n,k);
     //debug
 
-    printf("\n Criando o a tabela de indices...\n ");
-    for (i = 0; i < n; i++){
-        printf(" - O indice[%d] recebeu  o valor %d\n",i,arr[i]);
-        arr[i] = i;
-    }
+
+    //MOSTRA O INDICE
+    //printf("\n Criando o a tabela de indices...\n ");
+    //for (i = 0; i < n; i++){
+    //    printf(" - O indice[%d] recebeu  o valor %d\n",i,arr[i]);
+     //   arr[i] = i;
+    //}
     //DEBUG
     //printf("\n");
     //printf("ELEMENTO 0: %d",elements[0]);
