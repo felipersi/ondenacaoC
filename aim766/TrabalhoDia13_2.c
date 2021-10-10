@@ -1,39 +1,37 @@
+//Busca Sequencial Linear
 #include <stdio.h>
 #include <stdlib.h>
 
-
-/*#define tamanho 5*/
-
-void ReadVector(int vet[],int tamanho);
-void PrintVector(int vet[], int tamanho);
-int SequentialSearch(int v[], int pesq, int tamanho);
+void ReadVector(int vet[],int sizeVet);
+void PrintVector(int vet[], int sizeVet);
+int SequentialSearch(int v[], int src, int sizeVet);
 
 int main(int argc, char *argv[])
 {
-    int tamanho;
+    int sizeVet;
    
-    printf("Informe tamanho do vetor  ");
-    scanf("%d", &tamanho);
+    printf("Informe tamanho do vetor:  ");
+    scanf("%d", &sizeVet);
    
-    int vet[tamanho];
-    int pos, procura;
+    int vet[sizeVet];
+    int pos, search;
     //Lê a vetor
-    ReadVector(vet, tamanho);
+    ReadVector(vet, sizeVet);
         
-    printf ("\nDigite um valor para pesquisar: ");
-    scanf("%d",&procura);
+    printf ("\nDigite um valor para pesquisa: ");
+    scanf("%d",&search);
     
     //Imprime o vetor na tela
-    PrintVector(vet, tamanho);
+    PrintVector(vet, sizeVet);
     
-    pos=SequentialSearch(vet,procura, tamanho);
+    pos=SequentialSearch(vet,search, sizeVet);
     if (pos==-1)
     {
         printf("\n\nValor nao encontrado no vetor!");
     }
     else
     {
-        printf("\n\nValor encontrado na posicao %d", pos+1);    
+        printf("\n\nValor encontrado na posicao %d", pos);    
     }
        
     printf("\n\n");  
@@ -44,12 +42,12 @@ int main(int argc, char *argv[])
 /*-----------------------------------
 Efetua a leitura do vetor 
 -------------------------------------*/
-void ReadVector(int vet[], int tamanho)
+void ReadVector(int vet[], int sizeVet)
 {
       int i;
-      for (i=0;i<tamanho;i++)
+      for (i=0;i<sizeVet;i++)
       {
-          printf("Informe o valor %d: ", i+1);
+          printf("Informe o valor %d: ", i);
           fflush(stdin);
           scanf("%d", &vet[i]);
       }
@@ -58,24 +56,26 @@ void ReadVector(int vet[], int tamanho)
 /*---------------------------------
 Imprime o vetor na tela
 -----------------------------------*/
-void PrintVector(int vet[], int tamanho)
+void PrintVector(int vet[], int sizeVet)
 {
       int i;
-      for (i=0;i<tamanho;i++)
+      for (i=0;i<sizeVet;i++)
       {
-          printf("%d", vet[i]);
+          printf(" %d", vet[i]);
       }
 }
 
 /*---------------------------------------------------
 Busca sequencial
 -----------------------------------------------------*/
-int SequentialSearch(int v[], int pesq, int tamanho)
+int SequentialSearch(int v[], int src, int sizeVet)
 {
      int i;
-     for(i=0;i<tamanho;i++)
+     for(i=0;i<sizeVet;i++)
      {
-          if(v[i]==pesq)
+         printf("\n");
+         printf("Comparado com: %d", v[i]);
+          if(v[i]==src)
           {
               return i;
           }
