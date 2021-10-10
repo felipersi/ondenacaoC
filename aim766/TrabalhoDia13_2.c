@@ -81,4 +81,5 @@ int SequentialSearch(int v[], int src, int sizeVet)
           }
      }
      return -1;   // não encontrado
+     
 }
