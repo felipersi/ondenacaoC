@@ -1,3 +1,6 @@
+/*
+
+*/
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -8,22 +11,32 @@ void ImprimeVetor(int vet[]);
 int PesquisaSequencial(int v[], int pesq);
 int OrdenaSequencia(int v[]);
 
-
 int main(int argc, char *argv[])
 {
-    int r;
-    int vet[tamanho];
+    int r, z;
+    int point[tamanho] = {0};
     int pos, procura;
+    int *vet = point;
+    int i;
+
     //Lê a vetor
+    vet = (int *)malloc(tamanho * sizeof(int));
+    
+    if(vet==NULL){
+        printf("sem espaço em memória");
+        system("pause");
+        exit(1);
+    }
+
     printf(" Gerando vetor: \n");
-    for(int i = 0; i < tamanho; i++){
+    for(i = 0; i < tamanho; i++){
         vet[i] = rand() % 100 + 1; 
-        printf("%3d ", vet[i]);
+        printf(" %3d ", vet[i]);
           if (i == 9 || i == 19 || i == 29 || i == 39 || i == 49){
              putchar('\n');
-            }
-    }
-    
+            }    
+        }
+
     //LeVetor(vet);
 
     printf ("\nDigite um valor para pesquisar: ");
@@ -31,7 +44,7 @@ int main(int argc, char *argv[])
     printf("\n");
     //Imprime o vetor na tela
     //ImprimeVetor(vet);
-    
+
     pos=PesquisaSequencial(vet,procura);
     if (pos==-1)
     {
@@ -50,7 +63,9 @@ int main(int argc, char *argv[])
 
     printf("\n\n");  
     system("PAUSE>>NULL");	
-    return 0;
+    
+    free(vet);
+return 0;
 }
 
 /*-----------------------------------
@@ -97,6 +112,9 @@ int PesquisaSequencial(int v[], int pesq)
      return -1;   // não encontrado
 }
 
+/*---------------------------------------------------
+Ordena sequencia
+-----------------------------------------------------*/
 int OrdenaSequencia(int v[])
 {
     int aux;
