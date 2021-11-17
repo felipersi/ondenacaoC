@@ -3,8 +3,9 @@
 */
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
-#define tamanho 50
+#define tamanho 100
 
 void LeVetor(int vet[]);
 void ImprimeVetor(int vet[]);
@@ -18,8 +19,7 @@ int main(int argc, char *argv[])
     int pos, procura;
     int *vet = point;
     int i;
-
-    //Lê a vetor
+   
     vet = (int *)malloc(tamanho * sizeof(int));
     
     if(vet==NULL){
@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
     for(i = 0; i < tamanho; i++){
         vet[i] = rand() % 100 + 1; 
         printf(" %3d ", vet[i]);
-          if (i == 9 || i == 19 || i == 29 || i == 39 || i == 49){
+          if (i == 9 || i == 19 || i == 29 || i == 39 || i == 49 || i == 59 || i == 69 || i == 79 || i == 89) {
              putchar('\n');
             }    
         }
@@ -44,8 +44,15 @@ int main(int argc, char *argv[])
     printf("\n");
     //Imprime o vetor na tela
     //ImprimeVetor(vet);
+    clock_t start_t, end_t, total_t;
+    start_t = clock();
 
     pos=PesquisaSequencial(vet,procura);
+
+    end_t = clock() - start_t;
+    double time_taken = ((double)start_t)/CLOCKS_PER_SEC; // in seconds
+    printf("\n\nTempo de execução MS: %f", time_taken);
+    
     if (pos==-1)
     {
         putchar('\n');
@@ -66,6 +73,8 @@ int main(int argc, char *argv[])
     
     free(vet);
 return 0;
+
+
 }
 
 /*-----------------------------------
@@ -100,7 +109,8 @@ Busca sequencial
 -----------------------------------------------------*/
 int PesquisaSequencial(int v[], int pesq)
 {
-     int i;
+    int i;
+    
      for(i=0;i<tamanho;i++)
      {
           printf("\nComparado com: %d", v[i]);
@@ -108,8 +118,10 @@ int PesquisaSequencial(int v[], int pesq)
           {
               return i;
           }
+        
      }
-     return -1;   // não encontrado
+   
+    return -1;   // não encontrado
 }
 
 /*---------------------------------------------------
@@ -119,8 +131,10 @@ int OrdenaSequencia(int v[])
 {
     int aux;
     int i, r;
+    clock_t start_t, end_t, total_t;
     putchar('\n');
     printf("\nValores Ordenados:\n\n");
+    
     for(i = 0; i < tamanho; i++){
           for(r = i; r < tamanho; r++){
                 if (v[i] > v[r]){
@@ -130,7 +144,7 @@ int OrdenaSequencia(int v[])
                 }
           }
           printf("%3d ", v[i]);
-          if (i == 9 || i == 19 || i == 29 || i == 39 || i == 49){
+          if (i == 9 || i == 19 || i == 29 || i == 39 || i == 49 || i == 59 || i == 69 || i == 79 || i == 89) {
              putchar('\n');
             }
         }
