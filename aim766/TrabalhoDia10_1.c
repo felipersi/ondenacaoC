@@ -5,34 +5,34 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define tamanho 100
+#define tamanho 100 //tamanho minimo do array numérico
 
-void LeVetor(int vet[]);
-void ImprimeVetor(int vet[]);
-int PesquisaSequencial(int v[], int pesq);
-int OrdenaSequencia(int v[]);
+void LeVetor(int vet[]); //função de leitura do vetor
+void ImprimeVetor(int vet[]);//função que printa o vetor
+int PesquisaSequencial(int v[], int pesq); //função que faz a pesquisa por um valor dentro do vetor
+int OrdenaSequencia(int v[]); //função que ordena o vetor
 
 int main(int argc, char *argv[])
 {
     int r, z;
     int point[tamanho] = {0};
     int pos, procura;
-    int *vet = point;
+    int *vet = point; // iniciando o ponteiro
     int i;
    
-    vet = (int *)malloc(tamanho * sizeof(int));
+    vet = (int *)malloc(tamanho * sizeof(int)); //alocação dinamica de valores em memória através do ponteiro
     
-    if(vet==NULL){
+    if(vet==NULL){ //verifica se há memória o suficiente
         printf("sem espaço em memória");
         system("pause");
         exit(1);
     }
 
-    printf(" Gerando vetor: \n");
+    printf(" Gerando vetor: \n"); //gera vetor numérico randomicamente
     for(i = 0; i < tamanho; i++){
         vet[i] = rand() % 100 + 1; 
         printf(" %3d ", vet[i]);
-          if (i == 9 || i == 19 || i == 29 || i == 39 || i == 49 || i == 59 || i == 69 || i == 79 || i == 89) {
+          if (i == 9 || i == 19 || i == 29 || i == 39 || i == 49 || i == 59 || i == 69 || i == 79 || i == 89) { 
              putchar('\n');
             }    
         }
@@ -44,16 +44,16 @@ int main(int argc, char *argv[])
     printf("\n");
     //Imprime o vetor na tela
     //ImprimeVetor(vet);
-    clock_t start_t, end_t, total_t;
-    start_t = clock();
+    clock_t start_t, end_t, total_t; 
+    start_t = clock(); //inicia contagem de tempo da busca de um dado de forma sequencia linear no vetor
 
-    pos=PesquisaSequencial(vet,procura);
+    pos=PesquisaSequencial(vet,procura); //chamada da função de pesquisa
 
-    end_t = clock() - start_t;
-    double time_taken = ((double)start_t)/CLOCKS_PER_SEC; // in seconds
-    printf("\n\nTempo de execução MS: %f", time_taken);
+    end_t = clock() - start_t; //finaliza execução
+    double time_taken = ((double)start_t)/CLOCKS_PER_SEC; 
+    printf("\n\nTempo de execução MS: %f", time_taken); //imprime valor de quanto tempo levou a execução
     
-    if (pos==-1)
+    if (pos==-1) //verifica se digitado pelo usuario foi ou não encontrado
     {
         putchar('\n');
         printf("\n\nValor nao encontrado no vetor!");
@@ -66,12 +66,12 @@ int main(int argc, char *argv[])
         putchar('\n');
     }
 
-    OrdenaSequencia(vet);
+    OrdenaSequencia(vet); //onrdena o array
 
     printf("\n\n");  
     system("PAUSE>>NULL");	
     
-    free(vet);
+    free(vet);//libera a memória
 return 0;
 
 
@@ -86,7 +86,7 @@ void LeVetor(int vet[])
       for (i=0;i<tamanho;i++)
       {
           printf("Informe o valor %d: ", i+1);
-          fflush(stdin);
+          fflush(stdin);// limpar o buffer do teclado
           scanf("%d", &vet[i]);
       }
 }
@@ -105,8 +105,10 @@ void ImprimeVetor(int vet[])
 }
 
 /*---------------------------------------------------
-Busca sequencial
------------------------------------------------------*/
+Busca sequencial - percorre cada posicao do vetor ate encontrar o valor desejado(se for encontrada para imediatamente e mostra em qual posicao foi encontrado)
+(se nao for encontrado retorna msg de que nao foi encontrado o valor dentro do vetor)
+------------------------------------------------------*/
+
 int PesquisaSequencial(int v[], int pesq)
 {
     int i;
@@ -131,11 +133,10 @@ int OrdenaSequencia(int v[])
 {
     int aux;
     int i, r;
-    clock_t start_t, end_t, total_t;
     putchar('\n');
     printf("\nValores Ordenados:\n\n");
     
-    for(i = 0; i < tamanho; i++){
+    for(i = 0; i < tamanho; i++){ //ordenação dos valores de forma crescente
           for(r = i; r < tamanho; r++){
                 if (v[i] > v[r]){
                    aux = v[r];
